@@ -2,8 +2,6 @@
 
 import tensorflow as tf
 
-
-########################学習###############################
 # csvデータを取得）
 data_queue = tf.train.string_input_producer(["pretarget.csv"])
 
@@ -61,27 +59,26 @@ cross_entropy = -tf.reduce_sum(y_ * tf.log(y))
 train_step = tf.train.GradientDescentOptimizer(0.01).minimize(cross_entropy)
 
 # すべての変数を初期化するための準備をする。
-init = tf.initialize_all_variables()
+init = tf.global_variables_initializer()
 
 # Sessionを定義し、すべての変数を初期化する。
-sess = tf.Session()
-sess.run(init)
+with tf.Session() as sess:
+    sess.run(init)
 
-summary_writer = tf.summary.FileWriter('log', graph=sess.graph)
-
-# 訓練を行う
-# mnistデータをSessionに渡して訓練を行い、train_stepの定義に合わせてモデルを更新する。
-for i in range(1000):
-    batch_xs, batch_ys = tf.train.batch([data,M], batch_size = 100)
-    sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
+    # 訓練を行う
+    # mnistデータをSessionに渡して訓練を行い、train_stepの定義に合わせてモデルを更新する。
+    for i in range(1000):
+        batch_xs, batch_ys = tf.train.batch([data, M], batch_size = 100)
+        sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})#xs,ysの後にそれぞれ.eval()を入れると無限ループ
 
 
-# 性能評価のための評価式を定義する。
-# 入力データに対するモデルの出力yと教師データy_が一致しているか確認する。
-correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+    # 性能評価のための評価式を定義する。
+    # 入力データに対するモデルの出力yと教師データy_が一致しているか確認する。
+    correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
 
-# 最終的な性能評価は平均値で決定することを定義する。
-accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
+    # 最終的な性能評価は平均値で決定することを定義する。
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
 
-# テストデータとそのラベルを使って性能を評価する。
-print (sess.run(accuracy, feed_dict={x: Data, y_: M2}))
+    # テストデータとそのラベルを使って性能を評価する。
+    print (sess.run(accuracy, feed_dict={x: Data, y_: M2}))
+    print (sess.run(value))
