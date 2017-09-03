@@ -2,6 +2,7 @@
 
 import tensorflow as tf
 
+########################target#############################
 # csvデータを取得）
 data_queue = tf.train.string_input_producer(["pretarget.csv"])
 
@@ -27,6 +28,9 @@ key2, value2 = reader2.read(data_queue2)
 Data1, Data2, Data3, Data4, Data5, Data6, M2 = tf.decode_csv(value2, [[1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0]])
 Data = tf.stack([Data1, Data2, Data3, Data4, Data5, Data6])
 ###########################################################
+
+# すべての変数を初期化するための準備をする。
+init = tf.global_variables_initializer()
 
 # 入力情報を持たせるためにplaceholderを定義する。
 # shape(第2引数)の次元にNoneを指定すると、どんな長さの次元数であっても対応できる。
@@ -58,8 +62,6 @@ cross_entropy = -tf.reduce_sum(y_ * tf.log(y))
 # (ここでは、y = tf.nn.softmax(...)としたので誤差逆伝搬法がニューラルネットの更新に採用されるようだ。)
 train_step = tf.train.GradientDescentOptimizer(0.01).minimize(cross_entropy)
 
-# すべての変数を初期化するための準備をする。
-init = tf.global_variables_initializer()
 
 # Sessionを定義し、すべての変数を初期化する。
 with tf.Session() as sess:
