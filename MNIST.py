@@ -71,7 +71,7 @@ with tf.Session() as sess:
     # mnistデータをSessionに渡して訓練を行い、train_stepの定義に合わせてモデルを更新する。
     for i in range(1000):
         batch_xs, batch_ys = tf.train.batch([data, M], batch_size = 100)
-        sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})#xs,ysの後にそれぞれ.eval()を入れると無限ループ
+        sess.run(train_step, feed_dict={x: batch_xs.eval(), y_: batch_ys.eval()})#xs,ysの後にそれぞれ.eval()を入れると無限ループ
 
 
     # 性能評価のための評価式を定義する。
