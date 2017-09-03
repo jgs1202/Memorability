@@ -10,7 +10,7 @@ data_queue = tf.train.string_input_producer(["pretarget.csv"])
 reader = tf.TextLineReader()
 key, value = reader.read(data_queue)
 
-# CSVデコード（列は3列、いずれも実数値、という指定↓）
+# CSVデコード（列は3列、いず修正修正れも実数値、という指定↓）
 data1, data2, data3, data4, data5, data6, M = tf.decode_csv(value, [[1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0]])
 data = tf.stack([data1, data2, data3, data4, data5, data6])
 ###########################################################
