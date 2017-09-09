@@ -76,14 +76,14 @@ with tf.Session() as sess:
     threads = tf.train.start_queue_runners(sess=sess, coord=coord)
     # 訓練を行う
     # mnistデータをSessionに渡して訓練を行い、train_stepの定義に合わせてモデルを更新する。
-    for i in range(0, 5):
+    for i in range(5):
         #batch_xs, batch_ys = tf.train.shuffle_batch([data[0:-1], data[-1:]], batch_size = batch_size, capacity=capacity, min_after_deque=min_after_depueue)
         #x_train, y_train = sess.run([batch_xs, batch_ys])
         print (0)
         print (0)
         print (0)
         print (0)
-        print (sess.run(data[0:-1], data[-1:]))
+        #print (sess.run(data[0:-1], data[-1:]))
         #sess.run(train_step, feed_dict={x: data[0:-1], y_: data[-1:]})#xs,ysの後にそれぞれ.eval()を入れると無限ループ
 
 
