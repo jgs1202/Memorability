@@ -30,3 +30,39 @@ All
 	0:n
 	1:y
 
+Title
+	0:none
+	1:Bottom
+	2:Top(low) or top-and-bottom or center
+	3:Top
+	4:Vertical
+	Top
+	Top-left
+	Top-center
+	Top(2nd row)
+	Top-right
+	Top center/right
+	Top(low)
+	Bottom(higher)
+	Bottom-center
+	title1,title2
+	Key(place
+
+Order
+
+	source	category
+	vistype
+	title location
+	attr: data-ink ratio
+	attr: # distinct colors
+	attr: black&white
+	attr: visual density
+	attr: human recognizable object
+	attr: human depiction
+	data redundancy	
+	message redundancy
+	illegible	
+	mem: at-a-glance HR (%)
+	mem: prolonged HR (%)	
+	
+	
