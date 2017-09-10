@@ -1,0 +1,32 @@
+Source
+	0:Economist Daily
+	1:National Post
+	2:US Department of the Treasury
+	3:Nature
+	4:Visual.ly	
+	5:World Health Organization
+	6:Wall Street Journal
+
+Category
+	0:N
+	1:G
+	2:S
+	3:I
+
+Vistype
+	0:Bars
+	1:Maps
+	2:Area
+	3:Lines
+	4:Table
+	5:Points
+	6:Trees and Networks
+	7:Diagrams
+	8:Circles
+	9:Grid / Matrix
+	10:Distribution
+
+All
+	0:n
+	1:y
+
