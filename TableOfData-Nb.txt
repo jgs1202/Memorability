@@ -1,41 +1,41 @@
 Source
-	0:Economist Daily
-	1:National Post
-	2:US Department of the Treasury
-	3:Nature
-	4:Visual.ly	
-	5:World Health Organization
-	6:Wall Street Journal
+	1:Economist Daily
+	2:National Post
+	3:US Department of the Treasury
+	4:Nature
+	5:Visual.ly	
+	6:World Health Organization
+	7:Wall Street Journal
 
 Category
-	0:N
+	3:N
 	1:G
 	2:S
-	3:I
+	4:I
 
 Vistype
-	0:Bars
-	1:Maps
-	2:Area
-	3:Lines
-	4:Table
-	5:Points
-	6:Trees and Networks
-	7:Diagrams
-	8:Circles
-	9:Grid / Matrix
-	10:Distribution
+	1:Bars
+	2:Maps
+	3:Area
+	4:Lines
+	5:Table
+	6:Points
+	7:Trees and Networks
+	8:Diagrams
+	9:Circles
+	10:Grid / Matrix
+	11:Distribution
 
 All
-	0:n
-	1:y
+	1:n
+	2:y
 
 Title
-	0:none
-	1:Bottom
-	2:Top(low) or top-and-bottom or center
-	3:Top
-	4:Vertical
+	1:none
+	2:Bottom
+	3:Top(low) or top-and-bottom or center
+	4:Top
+	5:Vertical
 	Top
 	Top-left
 	Top-center
@@ -50,19 +50,37 @@ Title
 
 Order
 
-	source	category
+	source
+	category
 	vistype
 	title location
 	attr: data-ink ratio
-	attr: # distinct colors
-	attr: black&white
+	*attr: # distinct colors
+	*attr: black&white
 	attr: visual density
-	attr: human recognizable object
+	*attr: human recognizable object
 	attr: human depiction
 	data redundancy	
 	message redundancy
-	illegible	
+	*illegible
 	mem: at-a-glance HR (%)
 	mem: prolonged HR (%)	
 	
+
+The results of 1 layer network
 	
+	We found 5 critical elements and 2 needless elements
+
+ [ -0.75285184]
+ [  5.44547415]
+ [  1.09473097]
+ [  0.01918256]
+ [  0.89518064]
+ [  5.71105528]
+ [ 13.79681873]
+ [ -1.37937927]
+ [ 10.19925213]
+ [  1.02276433]
+ [ -0.99240595]
+ [ -1.10955894]
+ [  7.92576694]]
