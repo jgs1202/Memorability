@@ -76,18 +76,19 @@ trainanswer = sess.run(train_y_batch)
 print("trainanswer is")
 print (trainanswer)
 
-for step in range(5000):
+for step in range(1000):
     x_train, y_train = sess.run([train_x_batch, train_y_batch])
     sess.run(optimizer, feed_dict={x:x_train, Y:y_train})
+    print(train_xy)
 
     if (step)%500 == 0:
         try:
             print("step : %d" %(step))
             hypo=sess.run(h, feed_dict={x:x_train})
             print("hypo is ")
-            print(hypo)
+            #print(hypo)
             print("y_train is ")
-            print(y_train)
+            #print(y_train)
         except tf.errors.OutOfRangeError:
             print("out of range.")
 

@@ -9,21 +9,13 @@ import matplotlib.pyplot as plt
 train_queue = tf.train.string_input_producer(['target_prolong.csv'],
                                                 num_epochs=None,
                                                 name='train_queue')
+reader = tf.TextLineReader()
+train_key, train_value = reader.read(train_queue)
 
-test_queue = tf.train.string_input_producer(['test_prolong.csv'],
-                                                num_epochs=None,
-                                                name='test_queue')
-
-reader1 = tf.TextLineReader()
-reader2 = tf.TextLineReader()
-train_key, train_value = reader1.read(train_queue)
-test_key, test_value = reader2.read(test_queue)
-
-record_defaults1 = [[1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0]]
-record_defaults2 = [[1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0]]
+record_defaults = [[1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0]]
 
 train_xy = tf.decode_csv(train_value, record_defaults=record_defaults1)
-train_x_batch, train_y_batch = tf.train.batch([train_xy[0:-1], train_xy[-1:]], batch_size=50, name="train", capacity=5000)
+test_batch = tf.train.batch(train_xy, batch_size=30, name="train", capacity=5000)
 
 test_xy = tf.decode_csv(test_value, record_defaults=record_defaults2)
 test_x_batch, test_y_batch = tf.train.batch([test_xy[0:-1], test_xy[-1:]], batch_size=44, name="test", capacity=4400)
@@ -72,6 +64,10 @@ summary_writer = tf.summary.FileWriter('tf_csv_data', graph_def=sess.graph_def)
 ##      Training
 ####################################################################
 
+#サンプルデータ作成
+for j in range(300)
+    for k in range (44)
+        if train_batch[j] == 
 coord = tf.train.Coordinator()
 threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 testanswer = sess.run(test_y_batch)

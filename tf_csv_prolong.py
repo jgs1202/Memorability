@@ -14,14 +14,16 @@ for N in range(1,10):
 
     exec("reader1%d = tf.TextLineReader()" % (N))
     exec("reader2%d = tf.TextLineReader()" % (N))
-    exec("train_key[N], train_value[N] = reader1.read(train_queue%d)" % (N))
-    exec("test_key[N], test_value[N] = reader2.read(test_queue[N])" % (N))
+    exec("train_key%d, train_value%d = reader1%d.read(train_queue%d)" % (N,N,N,N))
+    exec("test_key%d, test_value%d = reader2%d.read(test_queue%d)" % (N,N,N,N))
 
     record_defaults1 = [[1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0]]
     record_defaults2 = [[1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0], [1.0]]
 
-    train_xy[N] = tf.decode_csv(train_value[N], record_defaults=record_defaults1)
-    train_x_batch[N], train_y_batch[N] = tf.train.batch([train_xy[N,0:-1], train_xy[N,-1:]], batch_size=50, name="train", capacity=5000)
+    train_xy, train_x_batch, train_y_batch, test_xy, test_x_batch, test_y_batch=[],[],[],[],[],[]
+    exec("train_xy.append(tf.decode_csv(train_value%d, record_defaults=record_defaults1))" % (N))
+    train_x_batch.append(tf.train.batch(train_xy[N][0:-1], batch_size=50, name="train%d" % (N), capacity=5000))
+    train_y_batch.append(tf.train.batch(train_xy[N][-1:], batch_size=50, name="train%d" % (N), capacity=5000))
 
     test_xy[N] = tf.decode_csv(test_value[N], record_defaults=record_defaults2)
     test_x_batch[N], test_y_batch[N] = tf.train.batch([test_xy[N,0:-1], test_xy[N,-1:]], batch_size=44, name="test", capacity=4400)
