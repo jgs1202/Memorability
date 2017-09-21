@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 ##      Input from file using tensorflow queue runners
 ####################################################################
 
-train_queue = tf.train.string_input_producer(['target_glance.csv'],
+train_queue = tf.train.string_input_producer(['prolong_target.csv'],
                                                 num_epochs=None,
                                                 name='train_queue')
 
-test_queue = tf.train.string_input_producer(['test_glance.csv'],
+test_queue = tf.train.string_input_producer(['prolong_test.csv'],
                                                 num_epochs=None,
                                                 name='test_queue')
 
@@ -85,9 +85,9 @@ for step in range(1000):
         try:
             print("step : %d" %(step))
             hypo=sess.run(h, feed_dict={x:x_train})
-            print("hypo is ")
+            #print("hypo is ")
             #print(hypo)
-            print("y_train is ")
+            #print("y_train is ")
             #print(y_train)
         except tf.errors.OutOfRangeError:
             print("out of range.")
